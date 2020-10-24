@@ -1,0 +1,15 @@
+# ------------------------------
+# Minestore-Sync by abhithedev
+# version: 1.0
+# ------------------------------
+
+
+
+# ------------------------------
+# MySQL information
+# ------------------------------
+mysql:
+  server_ip: "localhost:3306"
+  username: "root"
+  password: ""
+  databasename: "test"

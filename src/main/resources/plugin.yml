@@ -1,0 +1,7 @@
+main: com.abhiram.minestore.Main
+name: Minestore-Sync
+version: 1.0
+author: abhiram
+
+depend:
+  - Vault
