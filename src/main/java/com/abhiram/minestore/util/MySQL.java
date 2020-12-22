@@ -39,12 +39,12 @@ public class MySQL {
 
         String sqlCreate = "CREATE TABLE IF NOT EXISTS playerdata"
                     + "  (uuid           VARCHAR(255) UNIQUE,"
-                    + "   username       VARCHAR(255) NOT NULL default '',",
-                    + "   prefix         VARCHAR(255) NOT NULL default '',",
-                    + "   suffix         VARCHAR(255) NOT NULL default '',",
-                    + "   balance             DOUBLE NOT NULL default 0.00,",
-                    + "   player_group          VARCHAR(255) NOT NULL default 0,",
-                    + "   PRIMARY KEY  (uuid))";
+                    + "   username       VARCHAR(255) NOT NULL default '',"
+                    + "   prefix         VARCHAR(255) NOT NULL default '',"
+                    + "   suffix         VARCHAR(255) NOT NULL default '',"
+                    + "   balance             DOUBLE NOT NULL default 0.00,"
+                    + "   player_group          VARCHAR(255) NOT NULL default 0,"
+                    + "   PRIMARY KEY  (uuid));";
 
             Statement statement = connection.createStatement();
             statement.execute(sqlCreate);
