@@ -25,19 +25,18 @@ public class APIManager {
 
         if(esp == null)
         {
-            Main.getInstance().getLogger().warning("Economy was not found. MineStore-Sync will just skip this...");
-        }else
-        {
-            economy = esp.getProvider();
+            Main.getInstance().getLogger().warning("Economy not found so plugin will break");
+            return;
         }
 
         if(csp == null)
         {
-            Main.getInstance().getLogger().warning("Hmm, something went wrong... Please, report this issue to Official MineStore Discord server!");
-        }else
-        {
-            chat = csp.getProvider();
+            Main.getInstance().getLogger().warning("Hmm, something wrong happened please report this bug in Minestore Discord");
+            return;
         }
+
+        economy = esp.getProvider();
+        chat = csp.getProvider();
     }
 
     public static Economy getEconomy()
