@@ -5,6 +5,7 @@ import com.abhiram.minestore.file.Config;
 import com.abhiram.minestore.task.DataBaseUpdateTask;
 import com.abhiram.minestore.task.UserLoaderTask;
 import com.abhiram.minestore.util.MySQL;
+import org.bstats.bukkit.Metrics;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -20,6 +21,9 @@ public class Main extends JavaPlugin {
         APIManager.vaulthook();
         MySQL.setuptable();
         initTask();
+
+        // Start Bstats
+        new Metrics(this,9729);
     }
 
     public Config getPluginConfig()
