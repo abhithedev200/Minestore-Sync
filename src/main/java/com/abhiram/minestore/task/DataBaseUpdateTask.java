@@ -13,7 +13,7 @@ public class DataBaseUpdateTask implements Runnable {
         for(User all : Manager.getPlayerManager().getUsers())
         {
             try {
-                String sql_qury = "UPDATE playerdata SET prefix = ?, suffix = ?, balance = ?, group = ? WHERE uuid=?";
+                String sql_qury = "UPDATE playerdata SET prefix = ?, suffix = ?, balance = ?, player_group = ? WHERE uuid=?";
                 PreparedStatement statement = MySQL.getConnection().prepareStatement(sql_qury);
 
                 statement.setString(1, all.getPrefix());

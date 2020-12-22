@@ -27,7 +27,7 @@ public class UserLoaderTask implements Runnable {
                     statement.setString(3,"null");
                     statement.setString(4,"null");
                     statement.setFloat(5,0);
-                    statement.setString(6,APIManager.getChat().getPlayerGroups(all)[0]);
+                    statement.setString(6,"null");
 
 
                     statement.execute();
@@ -37,18 +37,32 @@ public class UserLoaderTask implements Runnable {
                 }
 
                 User new_user = new User(all.getUniqueId().toString(),all.getName());
-                new_user.setBalance(APIManager.getEconomy().getBalance(all));
-                new_user.setPrefix(APIManager.getChat().getPlayerPrefix(all));
-                new_user.setSuffix(APIManager.getChat().getPlayerSuffix(all));
 
-
-                String[] group = APIManager.getChat().getPlayerGroups(all);
-                if(group.length == 0)
+                if(APIManager.getEconomy() != null) {
+                    new_user.setBalance(APIManager.getEconomy().getBalance(all));
+                }else
                 {
-                    return;
+                    new_user.setBalance(0.0);
                 }
 
-                new_user.setGroup_name(group[0]);
+                if(APIManager.getChat() != null) {
+                    new_user.setPrefix(APIManager.getChat().getPlayerPrefix(all));
+                    new_user.setSuffix(APIManager.getChat().getPlayerSuffix(all));
+
+
+                    String[] group = APIManager.getChat().getPlayerGroups(all);
+                    if (group.length == 0) {
+                        return;
+                    }
+
+                    new_user.setGroup_name(group[0]);
+                }
+                else
+                {
+                    new_user.setSuffix("null");
+                    new_user.setPrefix("null");
+                    new_user.setGroup_name("null");
+                }
 
 
                 Manager.getPlayerManager().addUser(new_user);
@@ -57,17 +71,27 @@ public class UserLoaderTask implements Runnable {
             }
 
 
-            user.setBalance(APIManager.getEconomy().getBalance(all));
-            user.setPrefix(APIManager.getChat().getPlayerPrefix(all));
-            user.setSuffix(APIManager.getChat().getPlayerSuffix(all));
-
-            String[] group = APIManager.getChat().getPlayerGroups(all);
-
-            if(group.length == 0)
-            {
-                return;
+            if(APIManager.getEconomy() != null) {
+                user.setBalance(APIManager.getEconomy().getBalance(all));
+            }else {
+                user.setBalance(0.0);
             }
-            user.setGroup_name(group[0]);
+
+            if(APIManager.getChat() != null) {
+                user.setPrefix(APIManager.getChat().getPlayerPrefix(all));
+                user.setSuffix(APIManager.getChat().getPlayerSuffix(all));
+
+                String[] group = APIManager.getChat().getPlayerGroups(all);
+
+                if (group.length == 0) {
+                    return;
+                }
+                user.setGroup_name(group[0]);
+            }else {
+                user.setPrefix("null");
+                user.setSuffix("null");
+                user.setGroup_name("null");
+            }
             return;
         }
     }
