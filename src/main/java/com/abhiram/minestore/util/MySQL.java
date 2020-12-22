@@ -19,6 +19,7 @@ public class MySQL {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection("jdbc:mysql://" + mysql_ip + "/" + database_name, username, password);
+            Main.getInstance().getLogger().info("Connected to DataBase!");
         }catch (Exception e)
         {
             // Main.getInstance().getLogger().info("Unable to connect to Database");
@@ -36,12 +37,13 @@ public class MySQL {
                 return;
             }
 
-            String sqlCreate = "CREATE TABLE IF NOT EXISTS " + "playerdata"
-                    + "  (uuid           VARCHAR(90) UNIQUE,"
-                    + "   username       VARCHAR(90),"
-                    + "   prefix         VARCHAR(90),"
-                    + "   suffix         VARCHAR(90),"
-                    + "   balance        DOUBLE)";
+            String sqlCreate = "CREATE TABLE IF NOT EXISTS playerdata"
+                    + "  (uuid           VARCHAR(255) UNIQUE,"
+                    + "   username       VARCHAR(255) NOT NULL,"
+                    + "   prefix         VARCHAR(255) NOT NULL,"
+                    + "   suffix         VARCHAR(255) NOT NULL,"
+                    + "   balance             DOUBLE,"
+                    + "   player_group          VARCHAR(255));";
 
             Statement statement = connection.createStatement();
             statement.execute(sqlCreate);

@@ -25,11 +25,13 @@ public class APIManager {
 
         if(esp == null)
         {
+            Main.getInstance().getLogger().warning("Economy not found so plugin will break");
             return;
         }
 
         if(csp == null)
         {
+            Main.getInstance().getLogger().warning("Hmm, something wrong happened please report this bug in Minestore Discord");
             return;
         }
 

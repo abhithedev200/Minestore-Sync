@@ -7,6 +7,7 @@ public class User {
     private String suffix;
     private double balance;
     private String group_name;
+    private String group;
 
     public User(String uuid,String username)
     {
