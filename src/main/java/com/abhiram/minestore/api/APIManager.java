@@ -15,7 +15,7 @@ public class APIManager {
     {
         if(Bukkit.getPluginManager().getPlugin("Vault") == null)
         {
-            Main.getInstance().getLogger().info("MINESTORE | vault not found disabling plugin....");
+            Main.getInstance().getLogger().info("MINESTORE | Vault plugin not found. Disabling MineStore-Sync plugin....");
             Bukkit.getPluginManager().disablePlugin(Main.getInstance());
             return;
         }
@@ -25,13 +25,13 @@ public class APIManager {
 
         if(esp == null)
         {
-            Main.getInstance().getLogger().warning("Economy was not found. MineStore-Sync will just skip this...");
+            Main.getInstance().getLogger().warning("MINESTORE | Economy was not found. MineStore-Sync will just skip this...");
             return;
         }
 
         if(csp == null)
         {
-            Main.getInstance().getLogger().warning("Hmm, something went wrong... Please, report this issue to Official MineStore Discord server!");
+            Main.getInstance().getLogger().warning("MINESTORE | Hmm, something went wrong... Please, report this issue to Official MineStore Discord server!");
             return;
         }
 
