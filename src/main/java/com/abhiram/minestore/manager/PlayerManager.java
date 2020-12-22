@@ -47,7 +47,7 @@ public class PlayerManager {
                 user.setPrefix(rs.getString("prefix"));
                 user.setSuffix(rs.getString("suffix"));
                 user.setBalance(rs.getDouble("balance"));
-                user.setGroup_name(rs.getString("group"));
+                user.setGroup_name(rs.getString("player_group"));
                 addUser(user);
             }
         }catch (Exception e)
