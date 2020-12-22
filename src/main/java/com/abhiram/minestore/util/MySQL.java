@@ -22,7 +22,7 @@ public class MySQL {
             Main.getInstance().getLogger().info("Connected to DataBase!");
         }catch (Exception e)
         {
-            // Main.getInstance().getLogger().info("Unable to connect to Database");
+            // Main.getInstance().getLogger().info("Unable to connect to database");
 
             // Unhandled Exception
         }
@@ -32,25 +32,26 @@ public class MySQL {
         try {
             if(connection == null)
             {
-                Main.getInstance().getLogger().warning("Unable to connect to Database please check your database information in config.yml");
-                Main.getInstance().getLogger().warning("NOTE: plugin functions will be broken!");
+                Main.getInstance().getLogger().warning("Unable to connect to database. Please, check your database credentials in config.yml");
+                Main.getInstance().getLogger().warning("NOTE: Plugin functions will be stopped!");
                 return;
             }
 
-            String sqlCreate = "CREATE TABLE IF NOT EXISTS playerdata"
+        String sqlCreate = "CREATE TABLE IF NOT EXISTS playerdata"
                     + "  (uuid           VARCHAR(255) UNIQUE,"
-                    + "   username       VARCHAR(255) NOT NULL,"
-                    + "   prefix         VARCHAR(255) NOT NULL,"
-                    + "   suffix         VARCHAR(255) NOT NULL,"
-                    + "   balance             DOUBLE,"
-                    + "   player_group          VARCHAR(255));";
+                    + "   username       VARCHAR(255) NOT NULL default '',",
+                    + "   prefix         VARCHAR(255) NOT NULL default '',",
+                    + "   suffix         VARCHAR(255) NOT NULL default '',",
+                    + "   balance             DOUBLE NOT NULL default 0.00,",
+                    + "   player_group          VARCHAR(255) NOT NULL default 0,",
+                    + "   PRIMARY KEY  (uuid))";
 
             Statement statement = connection.createStatement();
             statement.execute(sqlCreate);
         }catch (Exception e)
         {
             e.printStackTrace();
-            Main.getInstance().getLogger().info("Unable to create table");
+            Main.getInstance().getLogger().info("MineStore was unable to create a table.");
         }
     }
 
