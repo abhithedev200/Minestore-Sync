@@ -35,7 +35,6 @@ public class UserLoaderTask implements Runnable {
                 {
                     ez.printStackTrace();
                 }
-
                 User new_user = new User(all.getUniqueId().toString(),all.getName());
 
                 if(APIManager.getEconomy() != null) {
@@ -49,13 +48,12 @@ public class UserLoaderTask implements Runnable {
                     new_user.setPrefix(APIManager.getChat().getPlayerPrefix(all));
                     new_user.setSuffix(APIManager.getChat().getPlayerSuffix(all));
 
-
                     String[] group = APIManager.getChat().getPlayerGroups(all);
-                    if (group.length == 0) {
-                        return;
+                    if(group != null) {
+                        if (group.length != 0) {
+                            user.setGroup_name(group[0]);
+                        }
                     }
-
-                    new_user.setGroup_name(group[0]);
                 }
                 else
                 {
@@ -63,7 +61,6 @@ public class UserLoaderTask implements Runnable {
                     new_user.setPrefix("null");
                     new_user.setGroup_name("null");
                 }
-
 
                 Manager.getPlayerManager().addUser(new_user);
 
@@ -82,17 +79,16 @@ public class UserLoaderTask implements Runnable {
                 user.setSuffix(APIManager.getChat().getPlayerSuffix(all));
 
                 String[] group = APIManager.getChat().getPlayerGroups(all);
-
-                if (group.length == 0) {
-                    return;
+                if(group != null) {
+                    if (group.length != 0) {
+                        user.setGroup_name(group[0]);
+                    }
                 }
-                user.setGroup_name(group[0]);
             }else {
                 user.setPrefix("null");
                 user.setSuffix("null");
                 user.setGroup_name("null");
             }
-            return;
         }
     }
 }
