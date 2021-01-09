@@ -51,7 +51,8 @@ public class UserLoaderTask implements Runnable {
                     String[] group = APIManager.getChat().getPlayerGroups(all);
                     if(group != null) {
                         if (group.length != 0) {
-                            user.setGroup_name(group[0]);
+                            // You are inside of an check, that says the user variable is null and you never reinitialized it, therefore it is still null.
+                            new_user.setGroup_name(group[0]);
                         }
                     }
                 }
