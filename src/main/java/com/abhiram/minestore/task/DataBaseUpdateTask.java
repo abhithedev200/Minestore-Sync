@@ -13,14 +13,15 @@ public class DataBaseUpdateTask implements Runnable {
         for(User all : Manager.getPlayerManager().getUsers())
         {
             try {
-                String sql_qury = "UPDATE playerdata SET prefix = ?, suffix = ?, balance = ?, player_group = ? WHERE uuid=?";
+                String sql_qury = "INSERT IGNORE INTO playerdata VALUES (?,?,?,?,?,?);";
                 PreparedStatement statement = MySQL.getConnection().prepareStatement(sql_qury);
 
-                statement.setString(1, all.getPrefix());
-                statement.setString(2, all.getSuffix());
-                statement.setDouble(3, all.getBalance());
-                statement.setString(4,all.getGroupName());
-                statement.setString(5, all.getUuid());
+                statement.setString(1,all.getUuid());
+                statement.setString(2,all.getUsername());
+                statement.setString(3,all.getSuffix());
+                statement.setString(4,all.getSuffix());
+                statement.setDouble(5,all.getBalance());
+                statement.setString(6,all.getGroupName());
                 statement.executeUpdate();
             }catch (Exception e)
             {
