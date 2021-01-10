@@ -75,13 +75,8 @@
       <groupId>com.github.MilkBowl</groupId>
       <artifactId>VaultAPI</artifactId>
       <version>1.7</version>
-      <scope>provided</scope>
-      <exclusions>
-        <exclusion>
-          <artifactId>bukkit</artifactId>
-          <groupId>org.bukkit</groupId>
-        </exclusion>
-      </exclusions>
+      <scope>system</scope>
+      <systemPath>${project.basedir}/src/main/resources/Vault (4).jar</systemPath>
     </dependency>
   </dependencies>
 </project>

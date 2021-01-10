@@ -1,5 +1,6 @@
 package com.abhiram.minestore.task;
 
+import com.abhiram.minestore.Main;
 import com.abhiram.minestore.api.APIManager;
 import com.abhiram.minestore.manager.User;
 import com.abhiram.minestore.util.Manager;
@@ -51,13 +52,13 @@ public class UserLoaderTask implements Runnable {
                     String[] group = APIManager.getChat().getPlayerGroups(all);
                     if(group != null) {
                         if (group.length != 0) {
-                            // You are inside of an check, that says the user variable is null and you never reinitialized it, therefore it is still null.
                             new_user.setGroup_name(group[0]);
                         }
                     }
                 }
                 else
                 {
+                    Main.getInstance().getLogger().info("Chat Was null so prefix and all is null");
                     new_user.setSuffix("null");
                     new_user.setPrefix("null");
                     new_user.setGroup_name("null");
@@ -86,6 +87,7 @@ public class UserLoaderTask implements Runnable {
                     }
                 }
             }else {
+                // Main.getInstance().getLogger().info("Chat Was null so prefix and all is null");
                 user.setPrefix("null");
                 user.setSuffix("null");
                 user.setGroup_name("null");
