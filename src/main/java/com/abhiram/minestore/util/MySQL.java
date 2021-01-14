@@ -1,6 +1,7 @@
 package com.abhiram.minestore.util;
 
 import com.abhiram.minestore.Main;
+import org.bukkit.Bukkit;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -34,6 +35,7 @@ public class MySQL {
             {
                 Main.getInstance().getLogger().warning("Unable to connect to database. Please, check your database credentials in config.yml");
                 Main.getInstance().getLogger().warning("NOTE: Plugin functions will be stopped!");
+                Bukkit.getPluginManager().disablePlugin(Main.getInstance());
                 return;
             }
 
