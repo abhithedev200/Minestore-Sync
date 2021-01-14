@@ -19,7 +19,7 @@ public class MySQL {
     {
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection("jdbc:mysql://" + mysql_ip + "/" + database_name, username, password);
+            connection = DriverManager.getConnection("jdbc:mysql://" + mysql_ip + "/" + database_name + "?autoReconnect=true", username, password);
             Main.getInstance().getLogger().info("Connected to DataBase!");
         }catch (Exception e)
         {
