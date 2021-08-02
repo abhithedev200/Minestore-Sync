@@ -33,8 +33,8 @@ public class Main extends JavaPlugin {
     private void initTask()
     {
         getLogger().info("Starting Plugin Tasks....");
-        Bukkit.getScheduler().runTaskTimer(this,new UserLoaderTask(),2,2);
-        Bukkit.getScheduler().runTaskTimer(this,new DataBaseUpdateTask(),30 * 20,30 * 20);
+        Bukkit.getScheduler().runTaskTimerAsynchronously(this,new UserLoaderTask(),2,2);
+        Bukkit.getScheduler().runTaskTimerAsynchronously(this,new DataBaseUpdateTask(),30 * 20,30 * 20);
     }
     public static Main getInstance()
     {

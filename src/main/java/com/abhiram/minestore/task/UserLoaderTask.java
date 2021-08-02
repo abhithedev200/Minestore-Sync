@@ -55,9 +55,7 @@ public class UserLoaderTask implements Runnable {
                             new_user.setGroup_name(group[0]);
                         }
                     }
-                }
-                else
-                {
+                } else {
                     Main.getInstance().getLogger().info("Chat Was null so prefix and all is null");
                     new_user.setSuffix("null");
                     new_user.setPrefix("null");
